@@ -27,7 +27,7 @@ function App() {
     } else {
       setRelated(sortedThousandWords)
     }
-  }, [input])
+  }, [input, sortedThousandWords])
 
   function reset() {
     setInput('')
