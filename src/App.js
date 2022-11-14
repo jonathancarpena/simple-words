@@ -3,12 +3,13 @@ import { thousandWords } from './lib/commonWords'
 import { MdSend } from 'react-icons/md'
 
 
-const limit = 160
+
 function App() {
   const [input, setInput] = useState('')
   const [related, setRelated] = useState([])
   const [count, setCount] = useState(0)
   const [output, setOutput] = useState([])
+  const [limit, setLimit] = useState(160)
 
 
   function handleInputChange(e) {
@@ -62,7 +63,14 @@ function App() {
 
   return (
     <div className="font-body min-h-screen w-screen bg-slate-400 flex justify-center items-center ">
+
+
       <div className='max-w-3xl w-full flex flex-col  space-y-5  '>
+        <div className='flex space-x-2 items-center bg-white w-max px-3 rounded-lg'>
+          <label htmlFor="maxChars" className=''>Max Chars:</label>
+          <input id="maxChars" type="number" min={0} onChange={(e) => setLimit(e.target.value)} className="outline-none px-3 py-2" />
+        </div>
+
         {/* Output */}
         <div className='relative min-h-[200px] max-h-[200px] bg-white rounded-xl drop-shadow-xl p-7'>
           {output.length > 0
