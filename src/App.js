@@ -24,6 +24,8 @@ function App() {
       } else {
         setRelated([])
       }
+    } else {
+      setRelated(thousandWords)
     }
   }, [input])
 
@@ -87,11 +89,16 @@ function App() {
         <div className='min-h-[200px] max-h-[200px] bg-white flex justify-center items-center rounded-xl drop-shadow-xl p-7'>
 
           <ul className='flex flex-wrap items-start  max-h-[160px]  overflow-y-auto w-full '>
-            {related.map((item) => (
-              <li onClick={() => addToOutput(item)} key={item} className="hover:drop-shadow-md hover:scale-105 active:scale-90 cursor-pointer transition-all ease-in-out duration-150 mb-3 mr-3 text-xl bg-white border-[1px] px-2 py-1 rounded-md">
-                {item}
-              </li>
-            ))}
+            {related.length > 0
+              ? related.map((item) => (
+                <li onClick={() => addToOutput(item)} key={item} className="hover:drop-shadow-md hover:scale-105 active:scale-90 cursor-pointer transition-all ease-in-out duration-150 mb-3 mr-3 text-xl bg-white border-[1px] px-2 py-1 rounded-md">
+                  {item}
+                </li>
+              ))
+              : <p>No Match</p>
+
+            }
+
           </ul>
 
 
